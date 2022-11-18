@@ -17,9 +17,9 @@
   "exports": "./index.js",
   "types": "index.d.ts",
   "files": [
-    "index.js",
-    "index.d.ts",
-    "index.d.ts.map",
+    "/index.js",
+    "/index.d.ts",
+    "/index.d.ts.map",
     "lib/*.js",
     "lib/*.d.ts",
     "lib/*.d.ts.map"
