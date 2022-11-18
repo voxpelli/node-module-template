@@ -4,6 +4,7 @@
 /node_modules
 /.env
 /.nyc_output
+/test-published-types/node_modules
 
 # We're a library, so please, no lock files
 /package-lock.json
