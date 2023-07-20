@@ -1,4 +1,1 @@
-/**
- * @returns {Promise<void>}
- */
-export async function something () {}
+export { default } from './lib/main.js';

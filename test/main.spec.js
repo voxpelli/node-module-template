@@ -1,6 +1,7 @@
 import chai from 'chai';
 
-import { something } from '../index.js';
+// TODO: Replace with proper setup
+import something from '../index.js';
 
 chai.should();
 
