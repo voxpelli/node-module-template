@@ -3,8 +3,8 @@
 A GitHub template repo for node modules
 
 <!--
-[![npm version](https://img.shields.io/npm/v/buffered-async-iterable.svg?style=flat)](https://www.npmjs.com/package/buffered-async-iterable)
-[![npm downloads](https://img.shields.io/npm/dm/buffered-async-iterable.svg?style=flat)](https://www.npmjs.com/package/buffered-async-iterable)
+[![npm version](https://img.shields.io/npm/v/@voxpelli/node-module-template.svg?style=flat)](https://www.npmjs.com/package/@voxpelli/node-module-template)
+[![npm downloads](https://img.shields.io/npm/dm/@voxpelli/node-module-template.svg?style=flat)](https://www.npmjs.com/package/@voxpelli/node-module-template)
 -->
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg)](https://github.com/voxpelli/eslint-config)
 [![Module type: ESM](https://img.shields.io/badge/module%20type-esm-brightgreen)](https://github.com/voxpelli/badges-cjs-esm)
