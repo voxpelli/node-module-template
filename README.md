@@ -27,6 +27,10 @@ import { something } from '@voxpelli/node-module-template';
 
 Takes a value (`input`), does something configured by the config (`configParam`) and returns the processed value asyncly(`output`)
 
+## Used by
+
+* [`example`](https://example.com/) – used by this one to do X and Y
+
 ## Similar modules
 
 * [`example`](https://example.com/) – is similar in this way
