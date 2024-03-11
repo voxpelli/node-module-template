@@ -30,7 +30,7 @@ Takes a value (`input`), does something configured by the config (`configParam`)
 ## Used by
 
 * [`example`](https://example.com/) – used by this one to do X and Y
-* Find more dependents at [GitHub](https://github.com/voxpelli/node-module-template/network/dependents) and [npm](https://www.npmjs.com/package/@voxpelli/node-module-template?activeTab=dependents)
+* Find more on [GitHub](https://github.com/voxpelli/node-module-template/network/dependents) or [npm](https://www.npmjs.com/package/@voxpelli/node-module-template?activeTab=dependents)
 
 ## Similar modules
 
