@@ -38,7 +38,7 @@
     "clean:declarations-lib": "rm -rf $(find lib -type f -name '*.d.ts*' ! -name '*-types.d.ts')",
     "clean": "run-p clean:*",
     "prepare": "husky",
-    "prepublishOnly": "run-s build",
+    "prepack": "run-s build",
     "test:mocha": "c8 --reporter=lcov --reporter text mocha 'test/**/*.spec.js'",
     "test-ci": "run-s test:*",
     "test": "run-s check test:*"
