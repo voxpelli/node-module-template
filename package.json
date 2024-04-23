@@ -67,6 +67,6 @@
     "mocha": "^10.4.0",
     "npm-run-all2": "^6.1.2",
     "type-coverage": "^2.28.1",
-    "typescript": "~5.4.4"
+    "typescript": "~5.4.5"
   }
 }
