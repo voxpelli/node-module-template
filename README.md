@@ -13,8 +13,6 @@ A GitHub template repo for node modules
 
 ## Usage
 
-### Simple
-
 ```javascript
 import { something } from '@voxpelli/node-module-template';
 
