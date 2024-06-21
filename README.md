@@ -40,7 +40,7 @@ something(input, [options]) => Promise<true>
 
 #### SomethingOptions
 
-* `maxAge` – _`number`_ – the maximum age of latest release to uinclude
+* `maxAge` – _`number`_ – the maximum age of latest release to include
 * `minDownloadsLastMonth = 400` – _`number`_ – the minimum amount of downloads needed to be returned
 * `skipPkg` – _`boolean`_ – when set skips resolving `package.json`
 
