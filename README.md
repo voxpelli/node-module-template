@@ -23,9 +23,32 @@ import { something } from '@voxpelli/node-module-template';
 
 ## API
 
-### `something(input, { configParam }) => Promise<output>`
+### something()
 
 Takes a value (`input`), does something configured by the config (`configParam`) and returns the processed value asyncly(`output`)
+
+Uses the [`ecosyste.ms`](https://ecosyste.ms/) API to resolve packages of dependents
+
+#### Syntax
+
+```ts
+something(input, [options]) => Promise<true>
+```
+
+#### Arguments
+
+* `input` – _`string`_ – the input of the method
+* `options` – _[`SomethingOptions`](#somethingoptions)_ – optional options
+
+#### SomethingOptions
+
+* `maxAge` – _`number`_ – the maximum age of latest release to uinclude
+* `minDownloadsLastMonth = 400` – _`number`_ – the minimum amount of downloads needed to be returned
+* `skipPkg` – _`boolean`_ – when set skips resolving `package.json`
+
+#### Returns
+
+A `Promise` that resolves to `true`
 
 ## Used by
 
