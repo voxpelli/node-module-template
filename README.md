@@ -27,8 +27,6 @@ import { something } from '@voxpelli/node-module-template';
 
 Takes a value (`input`), does something configured by the config (`configParam`) and returns the processed value asyncly(`output`)
 
-Uses the [`ecosyste.ms`](https://ecosyste.ms/) API to resolve packages of dependents
-
 #### Syntax
 
 ```ts
