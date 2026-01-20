@@ -168,7 +168,8 @@ sequenceDiagram
 2. **Type Configuration**
    - `tsconfig.json` - Main TypeScript config for type checking
    - `declaration.tsconfig.json` - Config for generating declarations
-   - Never commit generated `.d.ts` files except `index.d.ts`
+   - Commit hand-written type files (`lib/*-types.d.ts`, `index.d.ts`)
+   - Don't commit auto-generated `.d.ts` files (generated from JSDoc)
 
 ### Dependencies
 
@@ -215,7 +216,7 @@ sequenceDiagram
 
 ### Node.js Version Support
 
-- Minimum: Node.js 20.15.0 or 22.2.0+
+- Required versions: `^20.15.0 || >=22.2.0`
 - Target latest LTS versions
 - Use modern JavaScript features available in these versions
 - No transpilation needed
@@ -275,7 +276,7 @@ npm run clean
 1. ❌ Don't use CommonJS (`require`/`module.exports`)
 2. ❌ Don't add unnecessary dependencies
 3. ❌ Don't skip type annotations in JSDoc
-4. ❌ Don't commit generated `.d.ts` files (except index.d.ts)
+4. ❌ Don't commit auto-generated `.d.ts` files (only commit hand-written ones)
 5. ❌ Don't use `any` types without good reason
 6. ❌ Don't skip tests for new functionality
 7. ❌ Don't mix module systems
