@@ -11,6 +11,21 @@ A GitHub template repo for node modules
 [![Types in JS](https://img.shields.io/badge/types_in_js-yes-brightgreen)](https://github.com/voxpelli/types-in-js)
 [![Follow @voxpelli@mastodon.social](https://img.shields.io/mastodon/follow/109247025527949675?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/@voxpelli)
 
+## About This Template
+
+This template is designed for **creating Node.js library modules** - packages that provide reusable functionality to other projects.
+
+**When to use this template:**
+- Building npm libraries and utilities
+- Creating shared code modules
+- Developing packages without CLI or server components
+
+**Related templates:**
+- **[node-cli-template](https://github.com/voxpelli/node-cli-template)** - For command-line tools and CLI applications
+- **[node-app-template](https://github.com/voxpelli/node-app-template)** - For web servers, REST APIs, and long-running services
+
+**For detailed coding guidelines and GitHub Copilot instructions**, see [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
+
 ## Usage
 
 ```javascript
