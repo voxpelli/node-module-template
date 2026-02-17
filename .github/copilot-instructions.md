@@ -1,5 +1,64 @@
 # GitHub Copilot Instructions for Node Module Template
 
+## Related Templates (Choose the Right Template First)
+
+This repository is a **GitHub Template Repo** for Node.js libraries. Before proceeding, confirm this is the right template for the project.
+
+Consider these alternatives depending on your project type:
+
+| If you are building… | Pick this template | Typical outcomes |
+|---|---|---|
+| Command-line tools, generators, build tooling | [`node-cli-template`](https://github.com/voxpelli/node-cli-template) | CLI apps, terminal workflows |
+| Web APIs, GraphQL services, workers/daemons | [`node-app-template`](https://github.com/voxpelli/node-app-template) | Long-running services |
+| Reusable libraries and shared utilities | [`node-module-template`](https://github.com/voxpelli/node-module-template) | npm modules, framework utilities |
+
+Default agent behavior: when intent is ambiguous in this repo, proceed in **library mode** and ask clarifying questions only if strong CLI/service signals appear.
+
+## Copilot Fast Path (Read First)
+
+Use this file to optimize for safe, high-quality, low-friction contributions in this Node.js module template.
+
+- Build for a **library package**, not a CLI or long-running app.
+- Use **ESM only** (`import` / `export`) and follow neostandard style.
+- Write JavaScript with **clear JSDoc types** so declarations can be generated and type-checked.
+- Keep `index.js` minimal and focused on re-exports from `lib/`.
+- Start with **local repository context first** (existing code + tests), then use MCP tools when external/current guidance is needed.
+- Validate before finishing: run checks/tests (`npm test` or equivalent scoped checks).
+- When behavior, scope, or risk is unclear, ask clarifying questions early instead of guessing.
+
+## Priority Rules: MUST, SHOULD, ASK FIRST, NEVER
+
+If rules conflict, follow `MUST` over `SHOULD`. If uncertainty remains, use `ask_questions` before making risky changes.
+
+### MUST
+
+- Use ESM syntax only; do not introduce CommonJS.
+- Keep changes minimal, targeted, and consistent with existing file structure and style.
+- Add or update tests when behavior changes.
+- Validate changes with lint/type/test checks before finalizing.
+- Prefer local patterns first; use MCP research for unknown APIs, external docs, and non-obvious decisions.
+
+### SHOULD
+
+- Prefer built-in Node.js APIs and avoid unnecessary dependencies.
+- Keep functions small, explicit, and documented with JSDoc.
+- Ask multiple focused MCP questions (2–4) rather than one broad question for unfamiliar domains.
+- Explain non-obvious implementation choices briefly in comments or PR notes.
+
+### ASK FIRST
+
+- Adding or replacing runtime dependencies.
+- Changing public API shape, exported names, or package entry points.
+- Large refactors, file moves, or renames beyond the immediate task.
+- Disabling checks, removing tests, or altering CI-related behavior.
+
+### NEVER
+
+- Mix module systems (`require` / `module.exports` in runtime code).
+- Bypass failing checks silently or claim validation that was not run.
+- Commit auto-generated declaration artifacts that repository policy says not to commit.
+- Guess requirements when clarification can be obtained quickly.
+
 ## Overview
 
 This repository is a **template for creating Node.js library modules** - packages that provide reusable functionality to other projects. It implements best practices for modern Node.js module development with TypeScript types in JavaScript, ESM modules, and comprehensive testing.
@@ -11,78 +70,84 @@ Use this template when creating:
 - **Shared code modules** used across multiple projects
 - **Packages with no CLI or server components**
 
-### Related Templates
+### Project Snapshot (Architecture + Workflow)
 
-Consider these alternatives depending on your project type:
-
-```mermaid
-graph TD
-    A[What are you building?] --> B{Has CLI?}
-    A --> C{Is it a service/API?}
-    A --> D{Is it a library?}
-    
-    B -->|Yes| E[node-cli-template]
-    C -->|Yes| F[node-app-template]
-    D -->|Yes| G[node-module-template]
-    
-    E --> H[Command-line tools<br/>CLI applications<br/>Build tools]
-    F --> I[Web servers<br/>REST APIs<br/>Background services]
-    G --> J[npm libraries<br/>Shared utilities<br/>Frameworks]
-    
-    style G fill:#90EE90
-    style E fill:#FFB6C1
-    style F fill:#87CEEB
-```
-
-**Use [node-cli-template](https://github.com/voxpelli/node-cli-template) when:**
-- Building command-line tools or CLI applications
-- Creating build tools or generators
-- Need to execute commands from the terminal
-
-**Use [node-app-template](https://github.com/voxpelli/node-app-template) when:**
-- Building web servers, REST APIs, or GraphQL services
-- Creating background workers or daemons
-- Need long-running processes or services
-
-### Project Architecture
-
-```mermaid
-graph LR
-    A[index.js] -->|exports| B[lib/main.js]
-    B --> C[Implementation]
-    D[index.d.ts] -->|types| C
-    E[test/*.spec.js] -->|validates| C
-    
-    F[TypeScript] -->|generates| D
-    G[ESLint] -->|validates| C
-    H[Mocha+Chai] -->|runs| E
-    
-    style A fill:#FFE4B5
-    style D fill:#E0BBE4
-    style E fill:#B4E7CE
-```
-
-### Development Workflow
-
-```mermaid
-sequenceDiagram
-    participant Dev as Developer
-    participant Git as Git Hooks
-    participant CI as GitHub Actions
-    
-    Dev->>Dev: Make code changes
-    Dev->>Dev: npm test (local)
-    Dev->>Git: git commit
-    Git->>Git: Run husky hooks
-    Git->>Dev: ✓ Hooks passed
-    Dev->>CI: git push
-    CI->>CI: Run lint workflow
-    CI->>CI: Run test workflow
-    CI->>CI: Run TypeScript checks
-    CI->>Dev: ✓ All checks passed
-```
+- `index.js` re-exports from `lib/main.js`; keep entrypoint surface minimal.
+- `lib/main.js` contains runtime implementation; `test/*.spec.js` validates behavior.
+- `index.d.ts` and `lib/*-types.d.ts` define the type surface.
+- Validation contract: run local checks/tests before commit, then rely on CI for lint + tests + TypeScript verification.
 
 ---
+
+## MCP-Assisted Research Workflow for Copilot
+
+Use MCP tools proactively to improve implementation quality and speed, especially when working with unfamiliar dependencies, protocols, or external systems.
+
+### Working Pattern (Strong Advisory)
+
+1. **Start local first**
+   - Read relevant files and tests in this repository first.
+   - Confirm existing patterns before introducing new approaches.
+
+2. **Use MCP for uncertainty or external knowledge**
+   - If the task depends on current docs, ecosystem practices, or repository-specific behavior not obvious from local code, default to MCP research before coding.
+   - Ask multiple targeted questions (typically 2–4) instead of one broad question.
+
+3. **Clarify ambiguities before implementation**
+   - If requirements, scope, or expected behavior are unclear, use `ask_questions` early rather than guessing.
+
+4. **Apply and verify**
+   - Convert findings into concrete code and tests.
+   - Validate with linting, type checks, and test runs.
+
+### Tool Selection by Trigger
+
+| Trigger | Prefer | Example Outcome | Provider |
+|------|------|-----------------|
+| Need current external facts or docs | `tavily_search` | Find authoritative and up-to-date references | Tavily MCP server |
+| Need structured content from a specific URL | `tavily_extract` | Pull relevant sections from docs/pages for implementation details | Tavily MCP server |
+| Need repository-specific architectural or usage guidance | `ask_question` | Get targeted answers grounded in a repository's docs/wiki | DeepWiki MCP server |
+| Requirements or assumptions are ambiguous | `askQuestion` | Resolve uncertainty before making code changes | VSCode built in tool |
+
+### Example MCP Usage Scenarios
+
+| Scenario | Use this tool (or sequence) | Example prompt | What to do with result |
+|---|---|---|---|
+| Integrating a new library and you need current best practices | `tavily_search` | "Latest best practices for validating unknown JSON in Node.js ESM libraries" | Use results to select a validation approach and reflect it in code + tests |
+| You already have official docs URL and need implementation details | `tavily_extract` | "Extract sections on authentication middleware options and error handling" | Translate extracted sections into concrete function signatures and edge-case tests |
+| You need repository-specific guidance before using a dependency | `ask_question` | "In owner/repo, which helpers are recommended for nested object access and type guards?" | Prefer repository-recommended utilities over custom ad hoc implementations |
+| Acceptance criteria are unclear before coding | `askQuestion` | "Should invalid input throw, return null, or return Result-style errors?" | Lock behavior expectations first, then implement to that contract |
+
+### Question Quality Guidelines
+
+Prefer specific, implementation-oriented questions.
+
+- Better: "What are the recommended patterns for validating unknown JSON payloads in X?"
+- Better: "What utility functions does X provide for nested object access, and when should each be used?"
+- Better: "What are the safe type-guard patterns for Y in modern Node.js ESM projects?"
+- Avoid: "How do I use X?"
+
+### Suggested Research Cadence
+
+When integrating a new dependency or protocol:
+
+1. Ask 2–4 targeted questions with `mcp_deepwiki_ask_question` (or equivalent source-aware MCP tools).
+2. Use `mcp_tavily_tavily_search` to validate recency and cross-check guidance.
+3. Use `mcp_tavily_tavily_extract` for exact sections from canonical docs.
+4. Implement with the discovered patterns, then verify through tests and checks.
+
+### Anti-Patterns to Avoid
+
+1. ❌ Skipping research when implementing unfamiliar APIs or protocols
+2. ❌ Asking one broad question and coding from partial answers
+3. ❌ Proceeding with unclear requirements instead of using `ask_questions`
+4. ❌ Treating stale assumptions as facts without checking current documentation
+
+### Tool Availability and Fallbacks
+
+- Default to the MCP tools above when available in the execution environment.
+- If a named MCP tool is unavailable, use the closest equivalent available tool path and continue with the same workflow.
+- Keep behavior consistent: local context first, then targeted external research, then implementation and verification.
 
 ## Coding Guidelines for GitHub Copilot
 
@@ -137,9 +202,9 @@ sequenceDiagram
      ```javascript
      import { describe, it } from 'mocha';
      import chai from 'chai';
-     
+
      const { expect } = chai;
-     
+
      describe('something()', () => {
        it('should return true', async () => {
          const result = await something('test');
