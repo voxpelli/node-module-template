@@ -189,26 +189,27 @@ When integrating a new dependency or protocol:
    /index.d.ts            # Generated type definitions
    /lib/main.js           # Core implementation
    /lib/advanced-types.d.ts  # Complex type definitions
-   /test/*.spec.js        # Mocha test files
+   /test/*.spec.js        # Runtime tests (node:test)
+   /typetests/*.tst.ts    # Type-level tests (tstyche)
    ```
 
 ### Testing
 
 1. **Test Framework**
-   - Use Mocha for test runner
-   - Use Chai for assertions
+    - Use `node:test` for runtime test runner
+    - Use `node:assert/strict` for runtime assertions
+    - Use `tstyche` for type-level contract testing
    - Place tests in `test/` directory with `.spec.js` extension
+    - Place type tests in `typetests/` with `.tst.ts` extension
    - Example:
      ```javascript
-     import { describe, it } from 'mocha';
-     import chai from 'chai';
-
-     const { expect } = chai;
+       import assert from 'node:assert/strict';
+       import { describe, it } from 'node:test';
 
      describe('something()', () => {
        it('should return true', async () => {
          const result = await something('test');
-         expect(result).to.equal(true);
+             assert.strictEqual(result, true);
        });
      });
      ```
@@ -220,7 +221,8 @@ When integrating a new dependency or protocol:
 
 3. **Running Tests**
    - `npm test` - Full test suite with checks
-   - `npm run test:mocha` - Just the tests
+   - `npm run test:node` - Runtime tests with c8 coverage
+   - `npm run check:2` - Type-level tests via tstyche
    - `npm run check` - Linting and type checking only
 
 ### Building and Type Generation
@@ -281,7 +283,7 @@ When integrating a new dependency or protocol:
 
 ### Node.js Version Support
 
-- Required versions: `^20.15.0 || >=22.2.0`
+- Required versions: `^20.19.0 || ^22.13.0 || >=24`
 - Target latest LTS versions
 - Use modern JavaScript features available in these versions
 - No transpilation needed
@@ -327,7 +329,10 @@ npm test
 npm run check:lint
 
 # Run only tests
-npm run test:mocha
+npm run test:node
+
+# Run type-level tests
+npm run check:2
 
 # Build type declarations
 npm run build
@@ -371,7 +376,7 @@ If your project wants to follow the voxpelli Node.js module style:
    - ESM modules only
    - Types in JavaScript (JSDoc + TypeScript)
    - Neostandard code style
-   - Mocha + Chai testing
+   - node:test + node:assert/strict + tstyche testing
    - Strict type coverage
    - Minimal dependencies
 

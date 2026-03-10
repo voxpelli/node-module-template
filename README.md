@@ -26,6 +26,19 @@ This template is designed for **creating Node.js library modules** - packages th
 
 **For detailed coding guidelines and GitHub Copilot instructions**, see [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
 
+## Testing
+
+This template uses two complementary test layers:
+
+- **Runtime tests** in `test/*.spec.js` using `node:test` and `node:assert/strict`
+- **Type-level tests** in `typetests/*.tst.ts` using `tstyche`
+
+Useful commands:
+
+- `npm test` – full verification flow
+- `npm run test:node` – runtime tests with c8 coverage
+- `npm run check:2` – type-level contract tests
+
 ## Usage
 
 ```javascript
