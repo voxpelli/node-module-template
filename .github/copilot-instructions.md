@@ -24,9 +24,13 @@ Default behavior in this repo: proceed in **library mode**.
 ## Commands
 
 - `npm run build` - clean and generate declaration output
+- `npm run husky-enable` - enable git hooks (opt-in)
+- `npm run husky-disable` - disable git hooks
 - `npm run test:node` - runtime tests with coverage
 - `npm run check-type-tests` - type-level tests
 - `npm test` - full checks + tests
+
+Lockfile policy: this module template does not commit a lockfile by default (`package-lock=false` in `.npmrc`).
 
 ## Guardrails
 
