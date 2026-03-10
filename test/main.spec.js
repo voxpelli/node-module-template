@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { isType } from '@voxpelli/typed-utils';
+
+import { assertType } from '@voxpelli/typed-utils';
 
 import { main } from '../index.js';
 
@@ -10,6 +11,10 @@ describe('something', () => {
 
     // Example usage of @voxpelli/typed-utils for type checking
     const value = 'example';
-    assert.ok(isType(value, 'string'));
+    assertType(value, 'string');
+
+    // Example usage of node:assert/strict for type checking
+    const value2 = 'example';
+    assert.equal(value2, 'example');
   });
 });
