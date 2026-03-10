@@ -29,7 +29,7 @@
     "build:0": "run-s clean",
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "build": "run-s build:*",
-    "check-type-tests": "run-s build && tstyche --target \"$(jq -r '.engines.typescript' package.json)\" --reporters list,summary && run-s clean",
+    "check-type-tests": "run-s build && tstyche --target \"$(node -p \"require('./package.json').engines.typescript\")\" --reporters list,summary && run-s clean",
     "check:installed-check": "installed-check -i tstyche",
     "check:knip": "knip",
     "check:lint": "eslint",

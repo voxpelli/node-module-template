@@ -37,7 +37,7 @@ Useful commands:
 
 - `npm test` – full verification flow
 - `npm run test:node` – runtime tests with c8 coverage
-- `npm run check:2` – type-level contract tests
+- `npm run check-type-tests` – type-level contract tests
 
 ## Usage
 
