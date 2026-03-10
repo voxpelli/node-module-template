@@ -1,12 +1,15 @@
-import chai from 'chai';
+import assert from 'node:assert/strict';
+import { describe, it } from 'node:test';
+import { isType } from '@voxpelli/typed-utils';
 
-// TODO: Replace with proper setup
 import { main } from '../index.js';
-
-chai.should();
 
 describe('something', () => {
   it('should work', async () => {
     await main();
+
+    // Example usage of @voxpelli/typed-utils for type checking
+    const value = 'example';
+    assert.ok(isType(value, 'string'));
   });
 });
