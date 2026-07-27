@@ -30,6 +30,7 @@
     "build:0": "run-s clean",
     "build:1-declaration": "tsc -p declaration.tsconfig.json",
     "check": "run-s clean && run-p check:* --continue-on-error && run-s check-type-tests",
+    "check:ast-grep": "ast-grep scan",
     "check:installed-check": "installed-check -i tstyche",
     "check:knip": "knip",
     "check:lint": "eslint",
@@ -39,6 +40,9 @@
     "clean": "run-p clean:*",
     "clean:declarations-lib": "rm -f $(find lib -type f -name '*.d.ts*' ! -name '*-types.d.ts' 2>/dev/null || true)",
     "clean:declarations-top": "rm -f $(find . -maxdepth 1 -type f -name '*.d.ts*' ! -name 'index.d.ts')",
+    "fix": "run-s fix:*",
+    "fix::ast-grep": "ast-grep scan --update-all",
+    "fix:lint": "eslint --fix",
     "husky-disable": "git config --unset core.hooksPath",
     "husky-enable": "husky",
     "prepublishOnly": "run-s build",
@@ -47,7 +51,9 @@
     "test-ci": "run-s test:*"
   },
   "devDependencies": {
+    "@ast-grep/cli": "^0.44.1",
     "@types/node": "^22.20.1",
+    "@voxpelli/ast-grep-rules": "^0.1.0",
     "@voxpelli/eslint-config": "^25.1.0",
     "@voxpelli/tsconfig": "^16.2.1",
     "@voxpelli/typed-utils": "^5.0.0",

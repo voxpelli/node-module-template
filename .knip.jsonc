@@ -3,5 +3,6 @@
   "entry": [
     "test/**/*.js",
     "typetests/**/*.tst.ts"
-  ]
+  ],
+  "ignoreDependencies": ["@voxpelli/ast-grep-rules"]
 }
