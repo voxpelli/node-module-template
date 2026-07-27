@@ -41,7 +41,7 @@
     "clean:declarations-lib": "rm -f $(find lib -type f -name '*.d.ts*' ! -name '*-types.d.ts' 2>/dev/null || true)",
     "clean:declarations-top": "rm -f $(find . -maxdepth 1 -type f -name '*.d.ts*' ! -name 'index.d.ts')",
     "fix": "run-s fix:*",
-    "fix::ast-grep": "ast-grep scan --update-all",
+    "fix:ast-grep": "ast-grep scan --update-all",
     "fix:lint": "eslint --fix",
     "husky-disable": "git config --unset core.hooksPath",
     "husky-enable": "husky",
