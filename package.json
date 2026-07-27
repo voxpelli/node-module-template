@@ -57,7 +57,7 @@
     "@types/node": "^22.20.1",
     "@voxpelli/ast-grep-rules": "^0.1.0",
     "@voxpelli/eslint-config": "^25.1.0",
-    "@voxpelli/remark-preset": "^0.1.0",
+    "@voxpelli/remark-preset": "^0.1.1",
     "@voxpelli/tsconfig": "^16.2.1",
     "@voxpelli/typed-utils": "^5.0.0",
     "c8": "^12.0.0",
